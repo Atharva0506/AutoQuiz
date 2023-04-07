@@ -34,7 +34,7 @@ function Searchbox() {
         //To use environment variables in Vite, I just named the variable with VITE prefix.
         //API_KEY is stored in .env file that I did not push
 
-        const apiKey = "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"; //sk-pV3NYkUI3l98vVAM6ryIT3BlbkFJjvS2fnwiVAgWMm3xwEWDEnter your own API Key from openai account to make this work
+        const apiKey = ""; //sk-pV3NYkUI3l98vVAM6ryIT3BlbkFJjvS2fnwiVAgWMm3xwEWDEnter your own API Key from openai account to make this work
         //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
         //API request needs this object. It is very simple no need to worry.
         //This format is given by OpenAI documentation only.
@@ -97,7 +97,7 @@ function Searchbox() {
                 <div className="hr"> <hr /></div>
             </div>
             <div className='qa'>
-                {/* {quiz.length > 0 && (
+                {quiz.length > 0 && (
                     <ul>
                         {quiz.map((item, index) => (
                             <li key={index}>
@@ -111,7 +111,7 @@ function Searchbox() {
                             </li>
                         ))}
                     </ul>
-                )} */}
+                )}
 
                 {/* {quiz && quiz.map((item, index) => (
                         <div className='main' key={index}>
