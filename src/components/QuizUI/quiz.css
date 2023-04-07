@@ -4,7 +4,8 @@
     
 }
 .head{
-    text-align: center;
+  
+  text-align: center;
     justify-content: center;
 }
 .head h2{
@@ -20,7 +21,14 @@
     width: 80%;
     background: var(--color-primary-variant);
 }
-.qa{
+.load{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 80%;
+    margin: auto;
+}
+.qa {
     width: 80%;
     margin: auto;
 }
@@ -42,6 +50,11 @@
 }
 .options {
     font-size: 1.5rem;
+}
+.options span{
+    color: var(--color-primary-variant);
+    font-weight: 500;
+    margin-left: 1rem;
 }
 
 .btn {
