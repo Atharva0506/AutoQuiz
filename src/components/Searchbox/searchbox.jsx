@@ -74,10 +74,8 @@ function Searchbox() {
 
             const quizArray = eval(quizString);
             setQuiz(quizArray); //sets state to our response in array format.
-            let myData = quiz;
-            console.log(myData[1]);
-            alert(myData);
-            // console.log(quizArray);
+            console.log(quiz);
+            console.log(quizArray);
         });
     }
 
