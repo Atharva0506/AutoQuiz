@@ -18,8 +18,9 @@ function Searchbox() {
   const [quiz, setQuiz] = useState([]);
   const [showDiv1, setShowDiv1] = useState(false);
   const [loading, setLoading] = useState(true);
-
-
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
+  const [globalVar, setGlobalVar] = useState(null);
+  const [globalVarMain, setGlobalVarMain] = useState(null);
   const handleDiv1Click = () => {
     setShowDiv1(true);
 
@@ -99,6 +100,16 @@ function Searchbox() {
     handleDiv1Click();
   }
 
+function  checkAnswer(answers,index2,index){
+  console.log("Ans key:"+answers[4]);
+  if(answers[4] == index2){
+    setIsAnswerCorrect(true);
+    setGlobalVar(index2);
+    setGlobalVarMain(index);
+  }
+  console.log(index);
+}
+
   return (<>
     <section className='search'>
       <div className='searchbox'>
@@ -132,7 +143,7 @@ function Searchbox() {
                       <div className="options">
                         {item.answers.map((answer, index2) => {
                           return (index2 !== 4 &&
-                            <p key={index2}><input type="radio" className='opt' name={index} value={answer} id="" /><span>{answer}</span></p>
+                            <p key={index2}><input type="radio" className='opt' name={index} value={answer} id="" onClick={() =>{ checkAnswer(item.answers,index2,index);}}/><span>{answer}</span>{isAnswerCorrect&& index==globalVarMain&& index2==globalVar && <span>0</span>}</p>
                           )
 
                         })}
