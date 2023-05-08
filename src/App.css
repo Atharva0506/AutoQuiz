@@ -13,10 +13,10 @@
 
 
 :root {
-     --color-bg: #DEFCF9; /*111133 | 222831 */
-    --color-bg-variant: #CADEFC; /* 2c2c6c | 393E46 */
-    --color-primary: #C3BEF0; /*4db5ff | 00ADB5 */
-    --color-primary-variant: #CCA8E9;
+     --color-bg: #F1F6F9; /*111133 | 222831 */
+    --color-bg-variant: #394867; /* 2c2c6c | 393E46 */
+    --color-primary: #212A3E; /*4db5ff | 00ADB5 */
+    --color-primary-variant: #9BA4B5;
 
     --color-white: #EEEEEE; /* #fff | 0EEEEEE0*/
     --color-light: rgba(255, 255, 255, 0.6);

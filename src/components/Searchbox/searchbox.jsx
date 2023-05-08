@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { HashLoader } from 'react-spinners';
+import Confetti from 'react-confetti';
+import QuizUI from "../QuizUI/quiz"
 import './searchbox.css';
 import "../QuizUI/quiz.css"
+import Question from '../../../../../AutoQuiz-main/AutoQuiz-main/src/Question';
 // import Quiz from '../QuizUI/quiz'
 // =======================================================
 
@@ -18,9 +21,7 @@ function Searchbox() {
   const [quiz, setQuiz] = useState([]);
   const [showDiv1, setShowDiv1] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
-  const [globalVar, setGlobalVar] = useState(null);
-  const [globalVarMain, setGlobalVarMain] = useState(null);
+  const [marks,setMarks] = useState(0);
   const handleDiv1Click = () => {
     setShowDiv1(true);
 
@@ -56,7 +57,9 @@ function Searchbox() {
 
     const APIBody = {
       'model': 'gpt-3.5-turbo',
-      'messages': [{ 'role': 'user', 'content': 'Create a JavaScript array of 5 objects with ' + topic + ' related questions, each including a question and a set of four multiple choice answers. Use the last index position of the answer array to indicate the correct answer. const quiz=' }]
+      'messages': [{ 'role': 'user', 'content': `Create a JavaScript array of 5 objects with ` +
+      topic +
+      ` related random and unique questions, each including a question and a set of four multiple choice answers. Use the last index position of the answer array to indicate the correct answer. Example format: [{"question":"question?","answers":["option1","option2","option3","option4",0]. const quiz=` }]
     }
 
     //fetch() is a javascript function for getting data.
@@ -111,6 +114,18 @@ function  checkAnswer(answers,index2,index){
 }
 
   return (<>
+  <div>
+    {marks === 4  && <Confetti  width={window.innerWidth}
+        height={window.innerHeight}
+        recycle={false}
+        numberOfPieces={200}
+        gravity={0.5}
+        initialVelocityX={0}
+        initialVelocityY={-10} />}
+    {/* Rest of your component */}
+  </div>
+  <div>
+
     <section className='search'>
       <div className='searchbox'>
         <div class="box">
@@ -122,45 +137,37 @@ function  checkAnswer(answers,index2,index){
     </section>{showDiv1 &&
       <div className='quizUi'>
         <div className='head'>
-          <h2>Quiz For {topic}</h2>
+           <div className='subtitle'><h2>Quiz For {topic}</h2> <h3><p>Marks: {marks}</p></h3></div>
           <div className="hr"> <hr /></div>
         </div>
         <div>
           {loading ? (
             <div className="loader load">
-              <HashLoader size={50} color="#36d7b7" />
+              <HashLoader size={50} color="#212A3E" />
             </div>
           ) :
             <div className='qa'>
+            
               {
-                quiz.map((item, index) => {
+                quiz.map((item, quizIndex) => {
                   return (
-                    <div className='main' key={index}>
-                      <div className='question'>
-
-                        <p>{item.question}</p>
-                      </div>
-                      <div className="options">
-                        {item.answers.map((answer, index2) => {
-                          return (index2 !== 4 &&
-                            <p key={index2}><input type="radio" className='opt' name={index} value={answer} id="" onClick={() =>{ checkAnswer(item.answers,index2,index);}}/><span>{answer}</span>{isAnswerCorrect&& index==globalVarMain&& index2==globalVar && <span>0</span>}</p>
-                          )
-
-                        })}
-                      </div>
-                    </div>
+                        <QuizUI object={item}
+                        key={quizIndex}
+                        id={quizIndex}
+                        incrementMarks={()=>setMarks(marks+1)}/>
                   )
                 })
               }
-              <div className='qbtn'>
+              {/* <div className='qbtn'>
                 <button type='' className='btn '><span> Submit</span></button>
-              </div>
+              </div> */}
             </div>
           }
         </div>
       </div>
 
     }
+    </div>
   </>
   )
 }

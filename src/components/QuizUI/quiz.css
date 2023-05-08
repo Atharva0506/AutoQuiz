@@ -1,16 +1,21 @@
 .quizUi{
-    height: 100vh;
-    width: 100%;
     
+    width: 80%;
+    margin: auto;
+   overflow: hidden;
 }
-.head{
-  
-  text-align: center;
-    justify-content: center;
+.subtitle{
+    display: flex;
+    justify-content: space-between;
+}
+.head h3{
+  text-align: right;
+  font-size: 3rem;
 }
 .head h2{
  font-size: 3rem;
 }
+
 .hr{
    margin-bottom: 2rem;
 }
@@ -18,7 +23,7 @@
     
     margin: auto;
     height: 0.2rem;
-    width: 80%;
+    width: 100%;
     background: var(--color-primary-variant);
 }
 .load{
@@ -29,8 +34,9 @@
     margin: auto;
 }
 .qa {
-    width: 80%;
+    width: 100%;
     margin: auto;
+
 }
 .main{
     border-radius: 20px;
